@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>遊戯王OCG カードパスワード生成器</title>
+	<style type="text/css">
+		body {
+			margin: 8px;
+			padding: 8px;
+			border: 1px solid silver;
+		}
+    p {
+			margin-bottom: 0.3em;
+			margin-top: 0.2em;
+		}
+	</style>
+	<script type="text/javascript">
+		let init = () => {
+		    const numOfPW = 8;
+		    for( let j=0; j<numOfPW; j++){
+		    	document.body.insertAdjacentHTML('afterbegin', '<p>');
+					document.body.insertAdjacentHTML('afterbegin',getRand());
+					document.body.insertAdjacentHTML('afterbegin','</p>');
+					document.body.insertAdjacentHTML('afterbegin','');
+				}
+		}
+		function getRand() { // returns 10-character number string
+			const randNum = Math.random();
+			const pwNum = Math.floor( randNum * 10000 * 1000);
+			if(pwNum.toString().length < 10) {
+				const reptTimes = 10 - pwNum.toString().length;
+				let zeroPaddingString = '';
+				for ( let i=0, max=reptTimes; i<max; i++){
+					zeroPaddingString = zeroPaddingString + '0';
+				}
+				return zeroPaddingString + pwNum.toString();
+			}	else {
+			    return pwNum.toString();
+			}
+		}
+	</script>
+</head>
+<body onload="init();">
+	
+</body>
+</html>
